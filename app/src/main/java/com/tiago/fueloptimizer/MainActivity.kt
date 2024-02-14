@@ -20,6 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tiago.fueloptimizer.ui.theme.FuelOptimizerTheme
 
@@ -49,12 +51,43 @@ fun App() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Álcool ou Gasolina",
-            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 32.sp)
-        )
-        Text(text = "Gasolina")
-        TextField(value = "2.00", onValueChange = {})
-        TextField(value = "2.00", onValueChange = {})
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Álcool ou Gasolina",
+                style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 32.sp)
+            )
+            Text(
+                text = "Gasolina", style = TextStyle(
+                    color = Color.Red,
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+            TextField(
+                value = "2.00",
+                onValueChange = {},
+                label = {
+                        Text(text = "Gasolina")
+                },
+            )
+            TextField(
+                value = "2.00",
+                onValueChange = {},
+                label = {
+                    Text(text = "Álcool")
+                },
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun appPreview() {
+    FuelOptimizerTheme {
+        App()
     }
 }
